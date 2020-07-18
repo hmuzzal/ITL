@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "ITL_MakeId.Model/1.0.0": {
+        "runtime": {
+          "ITL_MakeId.Model.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ITL_MakeId.Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
