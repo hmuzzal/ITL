@@ -1,28 +1,28 @@
-﻿using ITL_MakeId.Web.Data;
+﻿using ITL_MakeId.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using ITL_MakeId.Model.DomainModel;
 
-namespace ITL_MakeId.Web.Areas.IdentityCard.Controllers
+namespace ITL_MakeId.Web.Controllers
 {
-    [Area("IdentityCard")]
-    public class IdentityCardsController : Controller
+    public class CardsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public IdentityCardsController(ApplicationDbContext context)
+        public CardsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: IdentityCard/IdentityCards
+
         public async Task<IActionResult> Index()
         {
             return View(await _context.IdentityCards.ToListAsync());
         }
 
-        // GET: IdentityCard/IdentityCards/Details/5
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -40,18 +40,16 @@ namespace ITL_MakeId.Web.Areas.IdentityCard.Controllers
             return View(identityCard);
         }
 
-        // GET: IdentityCard/IdentityCards/Create
+
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: IdentityCard/IdentityCards/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Designation,BloodGroup,CardNumber,ImagePathOfUser,ImagePathOfUserSignature,ImagePathOfAuthorizedSignature,CompanyName,CompanyAddress,CompanyLogoPath,CardInfo")] Model.IdentityCard.IdentityCard identityCard)
+        public async Task<IActionResult> Create([Bind("Id,Name,Designation,BloodGroup,CardNumber,ImagePathOfUser,ImagePathOfUserSignature,ImagePathOfAuthorizedSignature,CompanyName,CompanyAddress,CompanyLogoPath,CardInfo")] IdentityCard identityCard)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +60,7 @@ namespace ITL_MakeId.Web.Areas.IdentityCard.Controllers
             return View(identityCard);
         }
 
-        // GET: IdentityCard/IdentityCards/Edit/5
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -78,12 +76,10 @@ namespace ITL_MakeId.Web.Areas.IdentityCard.Controllers
             return View(identityCard);
         }
 
-        // POST: IdentityCard/IdentityCards/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Designation,BloodGroup,CardNumber,ImagePathOfUser,ImagePathOfUserSignature,ImagePathOfAuthorizedSignature,CompanyName,CompanyAddress,CompanyLogoPath,CardInfo")] Model.IdentityCard.IdentityCard identityCard)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Designation,BloodGroup,CardNumber,ImagePathOfUser,ImagePathOfUserSignature,ImagePathOfAuthorizedSignature,CompanyName,CompanyAddress,CompanyLogoPath,CardInfo")] IdentityCard identityCard)
         {
             if (id != identityCard.Id)
             {
@@ -113,7 +109,7 @@ namespace ITL_MakeId.Web.Areas.IdentityCard.Controllers
             return View(identityCard);
         }
 
-        // GET: IdentityCard/IdentityCards/Delete/5
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -131,7 +127,7 @@ namespace ITL_MakeId.Web.Areas.IdentityCard.Controllers
             return View(identityCard);
         }
 
-        // POST: IdentityCard/IdentityCards/Delete/5
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

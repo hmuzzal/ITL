@@ -1,10 +1,9 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ITL_MakeId.Web.Data.Migrations
+namespace ITL_MakeId.Data.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,11 +47,34 @@ namespace ITL_MakeId.Web.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "IdentityCards",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    Designation = table.Column<string>(nullable: true),
+                    BloodGroup = table.Column<string>(nullable: true),
+                    CardNumber = table.Column<string>(nullable: true),
+                    ImagePathOfUser = table.Column<string>(nullable: true),
+                    ImagePathOfUserSignature = table.Column<string>(nullable: true),
+                    ImagePathOfAuthorizedSignature = table.Column<string>(nullable: true),
+                    CompanyName = table.Column<string>(nullable: true),
+                    CompanyAddress = table.Column<string>(nullable: true),
+                    CompanyLogoPath = table.Column<string>(nullable: true),
+                    CardInfo = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IdentityCards", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -73,7 +95,7 @@ namespace ITL_MakeId.Web.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -209,6 +231,9 @@ namespace ITL_MakeId.Web.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "IdentityCards");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ITL_MakeId.Model.IdentityCard
+namespace ITL_MakeId.Model.DomainModel
 {
     public class IdentityCard
     {
         public int Id { get; set; }
+        [Display(Name = "Blood Group")]
         public string Name { get; set; }
         public string Designation { get; set; }
 

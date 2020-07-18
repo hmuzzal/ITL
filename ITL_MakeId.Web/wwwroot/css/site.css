@@ -1,9 +1,10 @@
 ﻿/*Override*/
 
-.about {
-    background-image: url('https://www.intertechbd.com/wp-content/uploads/2016/03/About-us-icon.jpg');
+.formbar {
+    background: #1765cf;
+    color: white;
+    text-align: center;
 }
-
 
 .bg_border_box {
     background: #E9ECEF

@@ -186,8 +186,10 @@ C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Deb
 C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\ITL_MakeId.Model.pdb
-C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\obj\Debug\netcoreapp3.1\Razor\Areas\IdentityCard\Views\IdentityCards\Create.cshtml.g.cs
-C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\obj\Debug\netcoreapp3.1\Razor\Areas\IdentityCard\Views\IdentityCards\Delete.cshtml.g.cs
-C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\obj\Debug\netcoreapp3.1\Razor\Areas\IdentityCard\Views\IdentityCards\Details.cshtml.g.cs
-C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\obj\Debug\netcoreapp3.1\Razor\Areas\IdentityCard\Views\IdentityCards\Edit.cshtml.g.cs
-C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\obj\Debug\netcoreapp3.1\Razor\Areas\IdentityCard\Views\IdentityCards\Index.cshtml.g.cs
+C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\obj\Debug\netcoreapp3.1\Razor\Views\Cards\Create.cshtml.g.cs
+C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\obj\Debug\netcoreapp3.1\Razor\Views\Cards\Delete.cshtml.g.cs
+C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\obj\Debug\netcoreapp3.1\Razor\Views\Cards\Details.cshtml.g.cs
+C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\obj\Debug\netcoreapp3.1\Razor\Views\Cards\Edit.cshtml.g.cs
+C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\obj\Debug\netcoreapp3.1\Razor\Views\Cards\Index.cshtml.g.cs
+C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\ITL_MakeId.Data.dll
+C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\ITL_MakeId.Data.pdb

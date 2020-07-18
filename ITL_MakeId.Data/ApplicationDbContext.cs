@@ -1,8 +1,8 @@
-﻿using ITL_MakeId.Model.IdentityCard;
+﻿using ITL_MakeId.Model.DomainModel;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace ITL_MakeId.Web.Data
+namespace ITL_MakeId.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

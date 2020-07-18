@@ -4,6 +4,77 @@
     "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Web\\ITL_MakeId.Web.csproj": {}
   },
   "projects": {
+    "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Data\\ITL_MakeId.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Data\\ITL_MakeId.Data.csproj",
+        "projectName": "ITL_MakeId.Data",
+        "projectPath": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Data\\ITL_MakeId.Data.csproj",
+        "packagesPath": "C:\\Users\\Hasan Mahmud\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Hasan Mahmud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj": {
+                "projectPath": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -89,6 +160,9 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
+              "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Data\\ITL_MakeId.Data.csproj": {
+                "projectPath": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Data\\ITL_MakeId.Data.csproj"
+              },
               "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj": {
                 "projectPath": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj"
               }

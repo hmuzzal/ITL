@@ -1,4 +1,4 @@
-using ITL_MakeId.Web.Data;
+using ITL_MakeId.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -58,17 +58,51 @@ namespace ITL_MakeId.Web
             app.UseAuthorization();
 
 
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapAreaControllerRoute(name: "card_route",
+            //        areaName: "IdentityCard",
+            //        pattern: "{controller}/{action}/{id?}");
+
+            //    endpoints.MapControllerRoute(name: "default",
+            //        pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
+            //    endpoints.MapRazorPages();
+            //});
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "IdentityCard",
-                    pattern: "{area}/{controller}/{action}/{id?}");
+                endpoints.MapAreaControllerRoute(
+                    name: "Card",
+                    areaName: "IdentityCard",
+                    pattern: "IdentityCard/{controller=IdentityCards}/{action=Index}/{id?}");
+
+
+                //endpoints.MapControllerRoute(
+                //    name: "Area",
+                //    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
             });
+
+
+
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "withArea",
+            //        pattern: "{area}/{controller}/{action}/{id?}");
+
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            //    endpoints.MapRazorPages();
+            //});
         }
     }
 }

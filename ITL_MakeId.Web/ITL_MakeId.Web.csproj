@@ -16,11 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\IdentityCard\Data\" />
-    <Folder Include="Areas\IdentityCard\Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\ITL_MakeId.Data\ITL_MakeId.Data.csproj" />
     <ProjectReference Include="..\ITL_MakeId.Model\ITL_MakeId.Model.csproj" />
   </ItemGroup>
 
