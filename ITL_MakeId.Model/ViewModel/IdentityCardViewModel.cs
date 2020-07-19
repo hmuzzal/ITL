@@ -25,6 +25,7 @@ namespace ITL_MakeId.Model.ViewModel
         [Display(Name = "Card Number")]
         public string CardNumber { get; set; }
 
+        [Display(Name = "User Image")]
         [Required(ErrorMessage = "Please, Select your image")]
         public IFormFile ImagePathOfUser { get; set; }
 

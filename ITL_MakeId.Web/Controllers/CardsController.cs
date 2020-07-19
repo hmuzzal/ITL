@@ -1,4 +1,6 @@
-﻿using ITL_MakeId.Data;
+﻿using System;
+using System.IO;
+using ITL_MakeId.Data;
 using ITL_MakeId.Model.DomainModel;
 using ITL_MakeId.Model.ViewModel;
 using Microsoft.AspNetCore.Mvc;
@@ -6,24 +8,40 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 
 namespace ITL_MakeId.Web.Controllers
 {
     public class CardsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        private string filePath;
 
-        public CardsController(ApplicationDbContext context)
+
+        public CardsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.IdentityCards.ToListAsync());
+
+            var validateUsers = await _context.IdentityCards.ToListAsync();
+
+            IdentityCardViewModel model = new IdentityCardViewModel();
+            
+
+            return View();
         }
 
+
+        //public async Task<IActionResult> ValidateUsers()
+        //{
+        //    return View(await _context.IdentityCards.ToListAsync().);
+        //}
 
         public async Task<IActionResult> Details(int? id)
         {
@@ -61,8 +79,8 @@ namespace ITL_MakeId.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Designation," +
-                                                      "BloodGroup,CardNumber,CardNumber,ImagePathOfUser,ImagePathOfUserSignature," +
+        public async Task<IActionResult> Create([Bind("Id,Name,DesignationId," +
+                                                      "BloodGroupId,CardNumber,CardNumber,ImagePathOfUser,ImagePathOfUserSignature," +
                                                       "ImagePathOfAuthorizedSignature,CompanyName,CompanyAddress," +
                                                       "CompanyLogoPath,CardInfo")] IdentityCardViewModel identityCardViewModel)
         {
@@ -72,27 +90,27 @@ namespace ITL_MakeId.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                //string uniqueFileNameSi = null;
-                //string uniqueFileNameSigImg = null;
-                //if (identityCardViewModel.ImagePathOfUser != null)
-                //{
-                //    string uplaodsFolderSi = Path.Combine(_webHostEnvironment.WebRootPath, "image");
-                //    uniqueFileNameSi = Guid.NewGuid().ToString() + "_" + viewStudent.StudentImage.FileName;
-                //    filePathSi = Path.Combine(uplaodsFolderSi, uniqueFileNameSi);
-                //    using (var stream = new FileStream(filePathSi, FileMode.Create))
-                //    {
-                //        viewStudent.StudentImage.CopyTo(stream);
-                //    }
+                string uniqueFileName = null;
+                if (identityCardViewModel.ImagePathOfUser != null)
+                {
+                    string uplaodsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "image/user/");
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + identityCardViewModel.ImagePathOfUser.FileName;
+                    filePath = Path.Combine(uplaodsFolder, uniqueFileName);
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        identityCardViewModel.ImagePathOfUser.CopyTo(stream);
+                    }
 
+                }
 
                 identityCardViewModel.IdentityCard.Name = identityCardViewModel.CardNumber;
-                identityCardViewModel.IdentityCard.Designation = identityCardViewModel.Designation;
-                identityCardViewModel.IdentityCard.BloodGroup = identityCardViewModel.BloodGroup;
+                identityCardViewModel.IdentityCard.DesignationId = identityCardViewModel.DesignationId;
+                identityCardViewModel.IdentityCard.BloodGroupId = identityCardViewModel.BloodGroupId;
                 identityCardViewModel.IdentityCard.CardNumber = identityCardViewModel.CardNumber;
-                //identityCardViewModel.IdentityCard.ImagePathOfUser = identityCardViewModel.ImagePathOfUser;
+                identityCardViewModel.IdentityCard.ImagePathOfUser = uniqueFileName;
 
 
-                _context.Add(identityCardViewModel);
+                        _context.Add(identityCardViewModel.IdentityCard);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

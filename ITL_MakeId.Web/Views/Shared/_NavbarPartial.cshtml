@@ -32,7 +32,8 @@
 
                 @if (SignInManager.IsSignedIn(User))
                 {
-                    <a class="dropdown-item" asp-area="" asp-controller="Cards" asp-action="Index">Card Holders</a>
+                    <a class="dropdown-item" asp-area="" asp-controller="Cards" asp-action="Index">Verified Card Holders</a>
+                    <a class="dropdown-item" asp-area="" asp-controller="Cards" asp-action="Index">Request List For Card</a>
                 }
                 <a class="dropdown-item" asp-area="" asp-controller="Cards" asp-action="Create">Register For Card</a>
             </div>

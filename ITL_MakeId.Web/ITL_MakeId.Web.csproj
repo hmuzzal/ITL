@@ -20,4 +20,8 @@
     <ProjectReference Include="..\ITL_MakeId.Model\ITL_MakeId.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\image\user\" />
+  </ItemGroup>
+
 </Project>

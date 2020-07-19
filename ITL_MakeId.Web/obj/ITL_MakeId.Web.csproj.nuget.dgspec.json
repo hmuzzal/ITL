@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Web\\ITL_MakeId.Web.csproj": {}
+    "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Web\\ITL_MakeId.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Data\\ITL_MakeId.Data.csproj": {
+    "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Data\\ITL_MakeId.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Data\\ITL_MakeId.Data.csproj",
+        "projectUniqueName": "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Data\\ITL_MakeId.Data.csproj",
         "projectName": "ITL_MakeId.Data",
-        "projectPath": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Data\\ITL_MakeId.Data.csproj",
-        "packagesPath": "C:\\Users\\Hasan Mahmud\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Data\\obj\\",
+        "projectPath": "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Data\\ITL_MakeId.Data.csproj",
+        "packagesPath": "C:\\Users\\soft-code\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Hasan Mahmud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\soft-code\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -32,8 +32,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj": {
-                "projectPath": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj"
+              "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj": {
+                "projectPath": "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj"
               }
             }
           }
@@ -71,25 +71,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj": {
+    "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj",
+        "projectUniqueName": "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj",
         "projectName": "ITL_MakeId.Model",
-        "projectPath": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj",
-        "packagesPath": "C:\\Users\\Hasan Mahmud\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Model\\obj\\",
+        "projectPath": "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj",
+        "packagesPath": "C:\\Users\\soft-code\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Hasan Mahmud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\soft-code\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -134,25 +134,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Web\\ITL_MakeId.Web.csproj": {
+    "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Web\\ITL_MakeId.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Web\\ITL_MakeId.Web.csproj",
+        "projectUniqueName": "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Web\\ITL_MakeId.Web.csproj",
         "projectName": "ITL_MakeId.Web",
-        "projectPath": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Web\\ITL_MakeId.Web.csproj",
-        "packagesPath": "C:\\Users\\Hasan Mahmud\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Web\\obj\\",
+        "projectPath": "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Web\\ITL_MakeId.Web.csproj",
+        "packagesPath": "C:\\Users\\soft-code\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Hasan Mahmud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\soft-code\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -166,11 +166,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Data\\ITL_MakeId.Data.csproj": {
-                "projectPath": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Data\\ITL_MakeId.Data.csproj"
+              "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Data\\ITL_MakeId.Data.csproj": {
+                "projectPath": "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Data\\ITL_MakeId.Data.csproj"
               },
-              "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj": {
-                "projectPath": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj"
+              "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj": {
+                "projectPath": "C:\\Users\\soft-code\\Desktop\\New folder\\ITL\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj"
               }
             }
           }
@@ -231,7 +231,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
