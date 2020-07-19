@@ -58,51 +58,18 @@ namespace ITL_MakeId.Web
             app.UseAuthorization();
 
 
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapAreaControllerRoute(name: "card_route",
-            //        areaName: "IdentityCard",
-            //        pattern: "{controller}/{action}/{id?}");
-
-            //    endpoints.MapControllerRoute(name: "default",
-            //        pattern: "{controller=Home}/{action=Index}/{id?}");
-
-
-            //    endpoints.MapRazorPages();
-            //});
-
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapAreaControllerRoute(
-                    name: "Card",
-                    areaName: "IdentityCard",
-                    pattern: "IdentityCard/{controller=IdentityCards}/{action=Index}/{id?}");
-
-
-                //endpoints.MapControllerRoute(
-                //    name: "Area",
-                //    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "withArea",
+                    pattern: "{area}/{controller}/{action}/{id?}");
 
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapRazorPages();
             });
-
-
-
-
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllerRoute(
-            //        name: "withArea",
-            //        pattern: "{area}/{controller}/{action}/{id?}");
-
-            //    endpoints.MapControllerRoute(
-            //        name: "default",
-            //        pattern: "{controller=Home}/{action=Index}/{id?}");
-
-            //    endpoints.MapRazorPages();
-            //});
         }
     }
 }

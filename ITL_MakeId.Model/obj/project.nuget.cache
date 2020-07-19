@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "qY7LuMR13Mb+GItTAQqn60vb5pWimYazgwNo4IGragL8l1Wvg2saX3X4oTwz8yfdBIlJbLa2wt3Pkv0tpTr4sA==",
+  "dgSpecHash": "lbr7P6xN+9ycz/DfHlebyKm3SOcmlDVJxCvRKIlgy3qTSBbi2pHyUWnlW/1kp5a06zaWlatDKYnYjkAa6V6Unw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Hasan Mahmud\\Desktop\\Project\\Practise\\ITL_MakeId\\ITL_MakeId.Model\\ITL_MakeId.Model.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Hasan Mahmud\\.nuget\\packages\\microsoft.aspnetcore.http.features\\3.1.6\\microsoft.aspnetcore.http.features.3.1.6.nupkg.sha512",
+    "C:\\Users\\Hasan Mahmud\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.6\\microsoft.extensions.primitives.3.1.6.nupkg.sha512",
+    "C:\\Users\\Hasan Mahmud\\.nuget\\packages\\system.io.pipelines\\4.7.1\\system.io.pipelines.4.7.1.nupkg.sha512"
+  ],
   "logs": []
 }

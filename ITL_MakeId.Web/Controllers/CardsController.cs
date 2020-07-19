@@ -62,7 +62,7 @@ namespace ITL_MakeId.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Designation," +
-                                                      "BloodGroup,CardNumber,ImagePathOfUser,ImagePathOfUserSignature," +
+                                                      "BloodGroup,CardNumber,CardNumber,ImagePathOfUser,ImagePathOfUserSignature," +
                                                       "ImagePathOfAuthorizedSignature,CompanyName,CompanyAddress," +
                                                       "CompanyLogoPath,CardInfo")] IdentityCardViewModel identityCardViewModel)
         {
@@ -72,6 +72,26 @@ namespace ITL_MakeId.Web.Controllers
 
             if (ModelState.IsValid)
             {
+                //string uniqueFileNameSi = null;
+                //string uniqueFileNameSigImg = null;
+                //if (identityCardViewModel.ImagePathOfUser != null)
+                //{
+                //    string uplaodsFolderSi = Path.Combine(_webHostEnvironment.WebRootPath, "image");
+                //    uniqueFileNameSi = Guid.NewGuid().ToString() + "_" + viewStudent.StudentImage.FileName;
+                //    filePathSi = Path.Combine(uplaodsFolderSi, uniqueFileNameSi);
+                //    using (var stream = new FileStream(filePathSi, FileMode.Create))
+                //    {
+                //        viewStudent.StudentImage.CopyTo(stream);
+                //    }
+
+
+                identityCardViewModel.IdentityCard.Name = identityCardViewModel.CardNumber;
+                identityCardViewModel.IdentityCard.Designation = identityCardViewModel.Designation;
+                identityCardViewModel.IdentityCard.BloodGroup = identityCardViewModel.BloodGroup;
+                identityCardViewModel.IdentityCard.CardNumber = identityCardViewModel.CardNumber;
+                //identityCardViewModel.IdentityCard.ImagePathOfUser = identityCardViewModel.ImagePathOfUser;
+
+
                 _context.Add(identityCardViewModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

@@ -1,4 +1,5 @@
 ﻿using ITL_MakeId.Model.DomainModel;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -25,10 +26,10 @@ namespace ITL_MakeId.Model.ViewModel
         public string CardNumber { get; set; }
 
         [Required(ErrorMessage = "Please, Select your image")]
-        public string ImagePathOfUser { get; set; }
-        public string ImagePathOfUserSignature { get; set; }
+        public IFormFile ImagePathOfUser { get; set; }
 
-        public string ImagePathOfAuthorizedSignature { get; set; }
+        public IFormFile ImagePathOfUserSignature { get; set; }
+        public IFormFile ImagePathOfAuthorizedSignature { get; set; }
 
         [Display(Name = "Company ")]
         public string CompanyName { get; set; }
@@ -36,8 +37,7 @@ namespace ITL_MakeId.Model.ViewModel
         [Display(Name = "Company Address")]
         public string CompanyAddress { get; set; }
 
-        //public IFormFile CompanyLogoPath { get; set; }
-        public string CompanyLogoPath { get; set; }
+        public IFormFile CompanyLogoPath { get; set; }
 
         public string CardInfo { get; set; }
 

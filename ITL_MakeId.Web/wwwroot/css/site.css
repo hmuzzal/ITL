@@ -1,5 +1,13 @@
 ﻿/*Override*/
 
+.upload-box {
+    margin-top: 15px;
+    margin-bottom: 23px;
+    width: 170%;
+    height: 170px;
+}
+
+
 .form-bg {
     background: #E9ECEF !important;
 }
@@ -20,7 +28,7 @@
 }
 
 .m-submitbtn {
-    margin-top: 110px;
+    margin-top: 50px;
 }
 
 
@@ -31,7 +39,8 @@
 
 .dropdown-menu {
    
-     background-color: transparent; 
+     background-color: transparent;
+    padding-bottom: 1px;
  
 }
 

@@ -193,3 +193,5 @@ C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\obj\Deb
 C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\ITL_MakeId.Data.dll
 C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\ITL_MakeId.Data.pdb
 C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll

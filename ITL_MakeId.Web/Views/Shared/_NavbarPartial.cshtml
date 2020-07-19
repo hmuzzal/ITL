@@ -1,4 +1,10 @@
-﻿<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Interlink Technologies Ltd.</a>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+
+<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Interlink Technologies Ltd.</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -10,10 +16,12 @@
             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
         </li>
 
-
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">DashBoard</a>
-        </li>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-white" asp-area="" asp-controller="" asp-action="">DashBoard</a>
+            </li>
+        }
 
 
         <li class="nav-item dropdown">
@@ -21,9 +29,11 @@
                 Identity Card
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                @*condition Only show for admin*@
 
-                <a class="dropdown-item" asp-area="" asp-controller="Cards" asp-action="Index">Card Holders</a>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <a class="dropdown-item" asp-area="" asp-controller="Cards" asp-action="Index">Card Holders</a>
+                }
                 <a class="dropdown-item" asp-area="" asp-controller="Cards" asp-action="Create">Register For Card</a>
             </div>
         </li>
