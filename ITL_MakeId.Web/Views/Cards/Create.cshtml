@@ -1,4 +1,4 @@
-﻿@model ITL_MakeId.Model.DomainModel.IdentityCard
+﻿@model ITL_MakeId.Model.ViewModel.IdentityCardViewModel
 
 @{
     Layout = "_Layout";
@@ -6,85 +6,57 @@
 }
 
 @*<div class="row">*@
-<div class="col-md-6 m-auto border p-0 mb-5">
+<div class="col-md-6 mr-auto ml-auto p-0 mt-5 mb-5">
 
-    <h3 class="formbar">Registration</h3>
-    <div class="col-md-6 m-auto">
+    <h3 class="formbar mb-0">Registration</h3>
+    <div class="col-md-12 form-bg">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-md-12">
+                <div class="form-group col-md-6 float-left">
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BloodGroup" class="control-label"></label>
+                        <select asp-for="BloodGroupId" class="form-control" asp-items="ViewBag.BloodGroupId"></select>
+                        <span asp-validation-for="BloodGroup" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ImagePathOfUser" class="control-label"></label>
+                        <input asp-for="ImagePathOfUser" class="form-control" />
+                        <span asp-validation-for="ImagePathOfUser" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6 float-left">
+                    <div class="form-group">
+                        <label asp-for="Designation" class="control-label"></label>
+                        <select asp-for="DesignationId" class="form-control" asp-items="ViewBag.DesignationId"></select>
+                        <span asp-validation-for="Designation" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CardNumber" class="control-label"></label>
+                        <input asp-for="CardNumber" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="CardNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group m-submitbtn">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <input asp-action="Index" value="Back To List" class="btn btn-primary" />
+                    </div>
+
+                </div>
+            </div>
 
 
-            <div class="form-group">
-                <label class="text-black-50" asp-for="Name"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-
-
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Designation" class="control-label"></label>
-                <input asp-for="Designation" class="form-control" />
-                <span asp-validation-for="Designation" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BloodGroup" class="control-label"></label>
-                <input asp-for="BloodGroup" class="form-control" />
-                <span asp-validation-for="BloodGroup" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CardNumber" class="control-label"></label>
-                <input asp-for="CardNumber" class="form-control" />
-                <span asp-validation-for="CardNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImagePathOfUser" class="control-label"></label>
-                <input asp-for="ImagePathOfUser" class="form-control" />
-                <span asp-validation-for="ImagePathOfUser" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImagePathOfUserSignature" class="control-label"></label>
-                <input asp-for="ImagePathOfUserSignature" class="form-control" />
-                <span asp-validation-for="ImagePathOfUserSignature" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImagePathOfAuthorizedSignature" class="control-label"></label>
-                <input asp-for="ImagePathOfAuthorizedSignature" class="form-control" />
-                <span asp-validation-for="ImagePathOfAuthorizedSignature" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CompanyName" class="control-label"></label>
-                <input asp-for="CompanyName" class="form-control" />
-                <span asp-validation-for="CompanyName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CompanyAddress" class="control-label"></label>
-                <input asp-for="CompanyAddress" class="form-control" />
-                <span asp-validation-for="CompanyAddress" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CompanyLogoPath" class="control-label"></label>
-                <input asp-for="CompanyLogoPath" class="form-control" />
-                <span asp-validation-for="CompanyLogoPath" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CardInfo" class="control-label"></label>
-                <input asp-for="CardInfo" class="form-control" />
-                <span asp-validation-for="CardInfo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
         </form>
         <div>
-            <a asp-action="Index">Back to List</a>
+            <a asp-action="Index" class="ml-4">Back to List</a>
         </div>
     </div>
 </div>
 @*</div>*@
-
-

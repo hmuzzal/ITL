@@ -1,14 +1,59 @@
 ﻿/*Override*/
 
+.form-bg {
+    background: #E9ECEF !important;
+}
+
+.sf-bg {
+    background: #E9ECEF !important;
+}
+
 .formbar {
     background: #1765cf;
     color: white;
     text-align: center;
+    padding: 3.5px 0px 3.5px 0px; 
 }
 
 .bg_border_box {
-    background: #E9ECEF
+    background: #E9ECEF;
 }
+
+.m-submitbtn {
+    margin-top: 110px;
+}
+
+
+.form-control:disabled, .form-control[readonly] {
+     background-color: white; 
+    opacity: 1;
+}
+
+.dropdown-menu {
+   
+     background-color: transparent; 
+ 
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: white;
+    text-align: inherit;
+    white-space: nowrap;
+    background: #2a424e;
+    border: 0;
+}
+
+    .dropdown-item:hover, .dropdown-item:active, .dropdown-item:focus {
+        background: #21343d;
+        text-decoration: none;
+        color: #e7cdcd;
+    }
+
 
 .cm {
     margin-right: 10%;

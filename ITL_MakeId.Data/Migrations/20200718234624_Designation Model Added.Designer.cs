@@ -4,14 +4,16 @@ using ITL_MakeId.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ITL_MakeId.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200718234624_Designation Model Added")]
+    partial class DesignationModelAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,8 +76,8 @@ namespace ITL_MakeId.Data.Migrations
                     b.Property<string>("CompanyName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DesignationId")
-                        .HasColumnType("int");
+                    b.Property<string>("Designation")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagePathOfAuthorizedSignature")
                         .HasColumnType("nvarchar(max)");
@@ -89,17 +91,9 @@ namespace ITL_MakeId.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ValidationEndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("ValidationStartDate")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("Id");
 
                     b.HasIndex("BloodGroupId");
-
-                    b.HasIndex("DesignationId");
 
                     b.ToTable("IdentityCards");
                 });
@@ -309,12 +303,6 @@ namespace ITL_MakeId.Data.Migrations
                     b.HasOne("ITL_MakeId.Model.DomainModel.BloodGroup", "BloodGroup")
                         .WithMany("Models")
                         .HasForeignKey("BloodGroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ITL_MakeId.Model.DomainModel.Designation", "Designation")
-                        .WithMany()
-                        .HasForeignKey("DesignationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -1,9 +1,11 @@
 ﻿using ITL_MakeId.Data;
+using ITL_MakeId.Model.DomainModel;
+using ITL_MakeId.Model.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using ITL_MakeId.Model.DomainModel;
 
 namespace ITL_MakeId.Web.Controllers
 {
@@ -43,21 +45,38 @@ namespace ITL_MakeId.Web.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            IdentityCardViewModel model = new IdentityCardViewModel();
+            ViewData["BloodGroupId"] = new SelectList(_context.BloodGroups, "Id", "Name");
+            ViewData["DesignationId"] = new SelectList(_context.Designations, "Id", "Title");
+
+            var identitycardInfo = _context.IdentityCards.ToList();
+            var cardNumber = identitycardInfo.LastOrDefault()?.CardNumber;
+
+            model.CardNumber = model.GetCardNumber(cardNumber);
+            //model.CardNumber = model.GetCardNumber(cardNumber ?? "ITL-0000");
+
+            return View(model);
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Designation,BloodGroup,CardNumber,ImagePathOfUser,ImagePathOfUserSignature,ImagePathOfAuthorizedSignature,CompanyName,CompanyAddress,CompanyLogoPath,CardInfo")] IdentityCard identityCard)
+        public async Task<IActionResult> Create([Bind("Id,Name,Designation," +
+                                                      "BloodGroup,CardNumber,ImagePathOfUser,ImagePathOfUserSignature," +
+                                                      "ImagePathOfAuthorizedSignature,CompanyName,CompanyAddress," +
+                                                      "CompanyLogoPath,CardInfo")] IdentityCardViewModel identityCardViewModel)
         {
+
+            ViewData["BloodGroupId"] = new SelectList(_context.BloodGroups, "Id", "Name");
+            ViewData["DesignationId"] = new SelectList(_context.Designations, "Id", "Title");
+
             if (ModelState.IsValid)
             {
-                _context.Add(identityCard);
+                _context.Add(identityCardViewModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(identityCard);
+            return View(identityCardViewModel);
         }
 
 
@@ -79,7 +98,9 @@ namespace ITL_MakeId.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Designation,BloodGroup,CardNumber,ImagePathOfUser,ImagePathOfUserSignature,ImagePathOfAuthorizedSignature,CompanyName,CompanyAddress,CompanyLogoPath,CardInfo")] IdentityCard identityCard)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Designation,BloodGroup,CardNumber," +
+                                                            "ImagePathOfUser,ImagePathOfUserSignature,ImagePathOfAuthorizedSignature," +
+                                                            "CompanyName,CompanyAddress,CompanyLogoPath,CardInfo")] IdentityCard identityCard)
         {
             if (id != identityCard.Id)
             {

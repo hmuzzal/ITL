@@ -12,5 +12,7 @@ namespace ITL_MakeId.Data
         }
 
         public DbSet<IdentityCard> IdentityCards { get; set; }
+        public DbSet<BloodGroup> BloodGroups { get; set; }
+        public DbSet<Designation> Designations { get; set; }
     }
 }

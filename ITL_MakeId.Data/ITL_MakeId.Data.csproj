@@ -13,8 +13,4 @@
     <ProjectReference Include="..\ITL_MakeId.Model\ITL_MakeId.Model.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="IRepository\" />
-  </ItemGroup>
-
 </Project>

@@ -1,5 +1,4 @@
 C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\appsettings.Development.json
-C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\ITL_MakeId.Web.StaticWebAssets.xml
 C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\ITL_MakeId.Web.exe
@@ -193,3 +192,4 @@ C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\obj\Deb
 C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\obj\Debug\netcoreapp3.1\Razor\Views\Cards\Index.cshtml.g.cs
 C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\ITL_MakeId.Data.dll
 C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\ITL_MakeId.Data.pdb
+C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_MakeId\ITL_MakeId.Web\bin\Debug\netcoreapp3.1\appsettings.json
