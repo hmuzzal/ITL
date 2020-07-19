@@ -1,11 +1,12 @@
-﻿@model IEnumerable<ITL_MakeId.Model.ViewModel.IdentityCardViewModel>
+﻿@model ITL_MakeId.Model.ViewModel.IdentityCardViewModel
 
 @{
     ViewData["Title"] = "Index";
 }
 <link href="~/css/datatable.css" rel="stylesheet" />
+<link href="~/css/all.css" rel="stylesheet" />
 
-<div class="col-md-12">
+<div class="col-md-10 m-auto">
     <h1 class="text-center">Validated Cards</h1>
 
     <table id="cardTable" class="table table-striped table-bordered" style="width:100%">
@@ -24,47 +25,48 @@
                     @Html.DisplayNameFor(model => model.BloodGroup)
                 </th>
                 <th>
-            @Html.DisplayNameFor(model => model.CardNumber)
-        </th>
+                    @Html.DisplayNameFor(model => model.CardNumber)
+                </th>
                 <th>
-            @Html.DisplayNameFor(model => model.CompanyName)
-        </th>
-       
-       
+                    @Html.DisplayNameFor(model => model.CompanyName)
+                </th>
+
+
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @foreach (var item in Model.IdentityCards)
             {
                 var imageUrl = "~/image/user/" + (item.ImagePathOfUser ?? "noimage.jpg");
 
-            <tr>
-                <td>
-                    <img style="height: 30px;width: 55px" class="card-img-top" src="@imageUrl" asp-append-version="true" />
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Designation)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BloodGroup.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CardNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CompanyName)
-                </td>
-               
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        <img style="height: 30px;width: 55px" class="card-img-top" src="@imageUrl" asp-append-version="true" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Designation.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BloodGroup.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CardNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompanyName)
+                    </td>
+
+                    <td>
+                        <a class="button-green" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a>
+                        @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
@@ -72,8 +74,8 @@
 
 @section Scripts{
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#cardTable').DataTable();
-        } );
+        });
     </script>
 }

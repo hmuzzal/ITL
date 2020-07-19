@@ -1,6 +1,8 @@
 ﻿using ITL_MakeId.Model.DomainModel;
 using Microsoft.AspNetCore.Http;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ITL_MakeId.Model.ViewModel
@@ -76,9 +78,11 @@ namespace ITL_MakeId.Model.ViewModel
 
         public IdentityCard IdentityCard { get; set; }
 
+        public IEnumerable<IdentityCard> IdentityCards { get; set; }
         public IdentityCardViewModel()
         {
             IdentityCard = new IdentityCard();
+            IdentityCards=new List<IdentityCard>();
         }
 
 

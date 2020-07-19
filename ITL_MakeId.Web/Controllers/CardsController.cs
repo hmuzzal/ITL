@@ -29,12 +29,18 @@ namespace ITL_MakeId.Web.Controllers
         public async Task<IActionResult> Index()
         {
 
-            var validateUsers = await _context.IdentityCards.ToListAsync();
+            //var applicationDbContext = _context.Reports.Include(r => r.Module).Include(r => r.SubModule);
+            //return View(await applicationDbContext.ToListAsync());
 
-            IdentityCardViewModel model = new IdentityCardViewModel();
+            var identityCards = await _context.IdentityCards
+                .Include(c=>c.BloodGroup)
+                .Include(c=>c.Designation).ToListAsync();
+
             
+            IdentityCardViewModel model = new IdentityCardViewModel();
+            model.IdentityCards = identityCards;
 
-            return View();
+            return View(model);
         }
 
 
