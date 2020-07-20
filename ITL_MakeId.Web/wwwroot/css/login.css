@@ -28,7 +28,7 @@
     min-width: 400px;
     margin: auto;
     /*padding: 45px;*/
-    margin-top: 170px;
+    margin-top: 140px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
@@ -95,11 +95,11 @@
     border-radius: 15px;
 }
 
-.back-btn:hover, .form button:active, .form button:focus {
-    background: #0554ae;
-    text-decoration: none;
-    color: #FFFFFF;
-}
+    .back-btn:hover, .back-btn:active, .back-btn:focus {
+        background: #0554ae;
+        text-decoration: none;
+        color: #FFFFFF;
+    }
 
 
 .form .message {
@@ -116,3 +116,4 @@
 .form .register-form {
     display: none;
 }
+

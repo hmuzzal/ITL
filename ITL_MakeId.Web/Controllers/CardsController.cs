@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using ITL_MakeId.Data;
 using ITL_MakeId.Model.DomainModel;
@@ -27,17 +28,15 @@ namespace ITL_MakeId.Web.Controllers
         }
 
 
+   
+
         public async Task<IActionResult> Index()
         {
+            var identityCards = await _context.IdentityCards
+                .Include(c => c.BloodGroup)
+                .Include(c => c.Designation).ToListAsync();
 
-            //var applicationDbContext = _context.Reports.Include(r => r.Module).Include(r => r.SubModule);
-            //return View(await applicationDbContext.ToListAsync());
 
-            var identityCards = await _context.IdentityCards.Where(c=>c.ValidationEndDate >= DateTime.Now)
-                .Include(c=>c.BloodGroup)
-                .Include(c=>c.Designation).ToListAsync();
-
-            
             IdentityCardViewModel model = new IdentityCardViewModel();
             model.IdentityCards = identityCards;
 
@@ -46,33 +45,51 @@ namespace ITL_MakeId.Web.Controllers
         }
 
 
-
-        public async Task<IActionResult> ExpiredUserCards()
+        public async Task<IActionResult> ValidatedUsers()
         {
 
-            var identityCards = await _context.IdentityCards.Where(c => c.ValidationEndDate < DateTime.Now)
+            var identityCards = await _context.IdentityCards.Where(c => c.ValidationEndDate >= DateTime.Now)
                 .Include(c => c.BloodGroup)
                 .Include(c => c.Designation).ToListAsync();
 
 
             IdentityCardViewModel model = new IdentityCardViewModel();
             model.IdentityCards = identityCards;
+            ViewBag.Title = "Validated Users";
 
             return View(model);
+        }
+
+
+
+        public async Task<IActionResult> ExpiredUserCards()
+        {
+
+            var identityCards = await _context.IdentityCards.Where(c => c.ValidationEndDate > new DateTime(2001, 1, 1) && c.ValidationEndDate < DateTime.Now)
+                .Include(c => c.BloodGroup)
+                .Include(c => c.Designation).ToListAsync();
+
+
+            IdentityCardViewModel model = new IdentityCardViewModel();
+            model.IdentityCards = identityCards;
+            ViewBag.Title = "Expired Card Users";
+
+            return View("ValidatedUsers", model);
         }
 
         public async Task<IActionResult> UserRequestForCard()
         {
 
-            var identityCards = await _context.IdentityCards.Where(c => c.ValidationEndDate ==null)
+            var identityCards = await _context.IdentityCards.Where(c => c.ValidationEndDate < new DateTime(2001, 1, 1))
                 .Include(c => c.BloodGroup)
                 .Include(c => c.Designation).ToListAsync();
 
 
             IdentityCardViewModel model = new IdentityCardViewModel();
             model.IdentityCards = identityCards;
+            ViewBag.Title = "Users Requested For Card ";
 
-            return View(model);
+            return View("ValidatedUsers", model);
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -103,7 +120,6 @@ namespace ITL_MakeId.Web.Controllers
             var cardNumber = identitycardInfo.LastOrDefault()?.CardNumber;
 
             model.CardNumber = model.GetCardNumber(cardNumber);
-            //model.CardNumber = model.GetCardNumber(cardNumber ?? "ITL-0000");
 
             return View(model);
         }
@@ -200,28 +216,7 @@ namespace ITL_MakeId.Web.Controllers
             return View(identityCard);
         }
 
-
         public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var identityCard = await _context.IdentityCards
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (identityCard == null)
-            {
-                return NotFound();
-            }
-
-            return View(identityCard);
-        }
-
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var identityCard = await _context.IdentityCards.FindAsync(id);
             _context.IdentityCards.Remove(identityCard);
@@ -233,5 +228,6 @@ namespace ITL_MakeId.Web.Controllers
         {
             return _context.IdentityCards.Any(e => e.Id == id);
         }
+
     }
 }

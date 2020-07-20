@@ -403,5 +403,4 @@ C:\Users\soft-code\Desktop\New folder\ITL\ITL_MakeId.Web\obj\Debug\netcoreapp3.1
 C:\Users\soft-code\Desktop\New folder\ITL\ITL_MakeId.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\Email.cshtml.g.cs
 C:\Users\soft-code\Desktop\New folder\ITL\ITL_MakeId.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs
 C:\Users\soft-code\Desktop\New folder\ITL\ITL_MakeId.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_Layout.cshtml.g.cs
-C:\Users\soft-code\Desktop\New folder\ITL\ITL_MakeId.Web\obj\Debug\netcoreapp3.1\Razor\Views\Cards\ExpiredUserCards.cshtml.g.cs
-C:\Users\soft-code\Desktop\New folder\ITL\ITL_MakeId.Web\obj\Debug\netcoreapp3.1\Razor\Views\Cards\UserRequestForCard.cshtml.g.cs
+C:\Users\soft-code\Desktop\New folder\ITL\ITL_MakeId.Web\obj\Debug\netcoreapp3.1\Razor\Views\Cards\ValidatedUsers.cshtml.g.cs

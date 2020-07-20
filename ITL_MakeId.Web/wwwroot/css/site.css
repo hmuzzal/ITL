@@ -216,12 +216,15 @@ a.navbar-brand {
     border-radius: 5px;*/
 }
 
-.back-btn:hover, .form button:active, .form button:focus {
+    .back-btn:hover, .back-btn:active, .back-btn:focus {
         background: #0554ae;
         text-decoration: none;
         color: #FFFFFF;
     }
 
+.form button:hover, .form button:active, .form button:focus {
+    background: #226c29;
+}
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fff;
