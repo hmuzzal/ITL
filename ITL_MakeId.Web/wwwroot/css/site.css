@@ -1,5 +1,30 @@
 ﻿/*Override*/
 
+.regi-bar {
+    background-color: #86acd6 !important
+}
+.regi-view {
+    margin-left: auto;
+    margin-right: auto;
+    border-color: #21343d;
+    border: 2px;
+    margin-top: 3%;
+    background: #eceaea;
+    padding: 0 0 2% 0;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #15314c;
+    background: beige;
+}
+
+.table td, .table th {
+    padding: .50rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
 .upload-box {
     margin-top: 15px;
     margin-bottom: 23px;
@@ -59,7 +84,7 @@
     .dropdown-item:hover, .dropdown-item:active, .dropdown-item:focus {
         background: #21343d;
         text-decoration: none;
-        color: #e7cdcd;
+        color: white;
     }
 
 

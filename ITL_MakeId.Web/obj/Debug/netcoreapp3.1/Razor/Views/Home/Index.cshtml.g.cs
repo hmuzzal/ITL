@@ -13,6 +13,20 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
+#line 1 "C:\Users\soft-code\Desktop\New folder\ITL\ITL_MakeId.Web\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "C:\Users\soft-code\Desktop\New folder\ITL\ITL_MakeId.Web\_ViewImports.cshtml"
+using ITL_MakeId.Web.Areas.Identity;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\soft-code\Desktop\New folder\ITL\ITL_MakeId.Web\Views\_ViewImports.cshtml"
 using ITL_MakeId.Web;
 
@@ -27,6 +41,7 @@ using ITL_MakeId.Web.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6d1b8569310a2f04e2b3ad6e12fe1db30a0efac2", @"/Views/Home/Index.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"aedbcf8f7daace6be9d6df19487d89c0e3a6ab62", @"/_ViewImports.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8bce9270555d635671e08de1625a5ad9118e1499", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
@@ -66,7 +81,7 @@ using ITL_MakeId.Web.Models;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n\r\n<div class=\"text-center m-auto\">\r\n    <h1 class=\"display-4 mt-5 mb-5\">Welcome</h1>\r\n    <h3 class=\"display-4 mb-5\">To</h3>\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "6d1b8569310a2f04e2b3ad6e12fe1db30a0efac24174", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "6d1b8569310a2f04e2b3ad6e12fe1db30a0efac24722", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

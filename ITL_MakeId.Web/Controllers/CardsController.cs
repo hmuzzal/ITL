@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Rotativa;
 
 namespace ITL_MakeId.Web.Controllers
 {
@@ -32,7 +33,7 @@ namespace ITL_MakeId.Web.Controllers
             //var applicationDbContext = _context.Reports.Include(r => r.Module).Include(r => r.SubModule);
             //return View(await applicationDbContext.ToListAsync());
 
-            var identityCards = await _context.IdentityCards
+            var identityCards = await _context.IdentityCards.Where(c=>c.ValidationEndDate >= DateTime.Now)
                 .Include(c=>c.BloodGroup)
                 .Include(c=>c.Designation).ToListAsync();
 
@@ -41,13 +42,38 @@ namespace ITL_MakeId.Web.Controllers
             model.IdentityCards = identityCards;
 
             return View(model);
+            //return ViewAsPdf(model);
         }
 
 
-        //public async Task<IActionResult> ValidateUsers()
-        //{
-        //    return View(await _context.IdentityCards.ToListAsync().);
-        //}
+
+        public async Task<IActionResult> ExpiredUserCards()
+        {
+
+            var identityCards = await _context.IdentityCards.Where(c => c.ValidationEndDate < DateTime.Now)
+                .Include(c => c.BloodGroup)
+                .Include(c => c.Designation).ToListAsync();
+
+
+            IdentityCardViewModel model = new IdentityCardViewModel();
+            model.IdentityCards = identityCards;
+
+            return View(model);
+        }
+
+        public async Task<IActionResult> UserRequestForCard()
+        {
+
+            var identityCards = await _context.IdentityCards.Where(c => c.ValidationEndDate ==null)
+                .Include(c => c.BloodGroup)
+                .Include(c => c.Designation).ToListAsync();
+
+
+            IdentityCardViewModel model = new IdentityCardViewModel();
+            model.IdentityCards = identityCards;
+
+            return View(model);
+        }
 
         public async Task<IActionResult> Details(int? id)
         {
