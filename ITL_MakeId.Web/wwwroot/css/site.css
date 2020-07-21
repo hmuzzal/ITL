@@ -1,4 +1,16 @@
 ﻿/*Override*/
+@media print {
+    .myDivToPrint {
+        background-color: rgb(230, 0, 0);
+        height: 100%;
+        width: 100%;
+        position: fixed;
+    }
+}
+
+.text-blue {
+    color: #2180C3;
+}
 .sig-font {
     font-size: 11px;
 }

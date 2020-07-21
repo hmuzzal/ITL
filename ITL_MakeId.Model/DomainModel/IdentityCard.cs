@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace ITL_MakeId.Model.DomainModel
@@ -19,7 +18,7 @@ namespace ITL_MakeId.Model.DomainModel
         }
 
         public int Id { get; set; }
-  
+
         public string Name { get; set; }
 
         public int DesignationId { get; set; }
@@ -39,16 +38,16 @@ namespace ITL_MakeId.Model.DomainModel
 
         public string CompanyName { get; set; }
 
- 
+
         public string CompanyAddress { get; set; }
 
         public string CompanyLogoPath { get; set; }
 
         public string CardInfo { get; set; }
         [DataType(DataType.Date)]
-        public DateTime ValidationStartDate { get; set; }
+        public DateTime? ValidationStartDate { get; set; }
         [DataType(DataType.Date)]
-        public DateTime ValidationEndDate { get; set; }
+        public DateTime? ValidationEndDate { get; set; }
 
     }
 }

@@ -1,7 +1,6 @@
 ﻿using ITL_MakeId.Model.DomainModel;
 using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -32,7 +31,9 @@ namespace ITL_MakeId.Model.ViewModel
         public IFormFile ImagePathOfUser { get; set; }
 
         [Display(Name = "Holder Signature")]
+        [Required(ErrorMessage = "Please, Select your signature")]
         public IFormFile ImagePathOfUserSignature { get; set; }
+
         [Display(Name = "Authorized Signature")]
         public IFormFile ImagePathOfAuthorizedSignature { get; set; }
 
@@ -84,7 +85,7 @@ namespace ITL_MakeId.Model.ViewModel
         public IdentityCardViewModel()
         {
             IdentityCard = new IdentityCard();
-            IdentityCards=new List<IdentityCard>();
+            IdentityCards = new List<IdentityCard>();
         }
 
 

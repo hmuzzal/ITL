@@ -62,7 +62,7 @@
 
                     <td>
                         <a class="button-green mr-2" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>|
-                        <a class="text-info" asp-action="Details" asp-route-id="@item.Id"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                        <a class="text-info" asp-action="Details" asp-route-id="@item.Id"><i class="fa fa-print" aria-hidden="true"></i></a>
                     </td>
                 </tr>
             }
@@ -75,9 +75,9 @@
         $(document).ready(function () {
             //$('#cardTable').DataTable();
 
-            $('#cardTable').dataTable( {
+            $('#cardTable').dataTable({
                 "searching": true
-            } );
+            });
         });
     </script>
 }

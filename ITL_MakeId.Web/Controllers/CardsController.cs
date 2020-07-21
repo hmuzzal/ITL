@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using ITL_MakeId.Data;
+﻿using ITL_MakeId.Data;
 using ITL_MakeId.Model.DomainModel;
 using ITL_MakeId.Model.ViewModel;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Rotativa;
 
 namespace ITL_MakeId.Web.Controllers
 {
@@ -20,7 +18,7 @@ namespace ITL_MakeId.Web.Controllers
         private readonly IWebHostEnvironment _webHostEnvironment;
         private string filePath;
         private string filePathSignature;
-        
+
         public CardsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
@@ -28,7 +26,28 @@ namespace ITL_MakeId.Web.Controllers
         }
 
 
-   
+
+        public async Task<IActionResult> Dashboard()
+        {
+            ViewBag.RequestedIdentityCards = _context.IdentityCards.Where(c => c.ValidationEndDate == null)
+                .Include(c => c.BloodGroup)
+                .Include(c => c.Designation).Count();
+
+
+            ViewBag.ValidatedIdentityCards = _context.IdentityCards.Where(c => c.ValidationEndDate >= DateTime.Now)
+                .Include(c => c.BloodGroup)
+                .Include(c => c.Designation).Count();
+
+            ViewBag.ExpiredIdentityCards = _context.IdentityCards.Where(c => c.ValidationEndDate < DateTime.Now)
+                .Include(c => c.BloodGroup)
+                .Include(c => c.Designation).Count();
+
+
+            return View();
+        }
+
+
+
 
         public async Task<IActionResult> Index()
         {
@@ -54,7 +73,7 @@ namespace ITL_MakeId.Web.Controllers
 
             IdentityCardViewModel model = new IdentityCardViewModel();
             model.IdentityCards = identityCards;
-            ViewBag.Title = "Validated Users";
+            ViewBag.Title = "Validated Card Users";
 
             return View(model);
         }
@@ -64,7 +83,7 @@ namespace ITL_MakeId.Web.Controllers
         public async Task<IActionResult> ExpiredUserCards()
         {
 
-            var identityCards = await _context.IdentityCards.Where(c => c.ValidationEndDate > new DateTime(2001, 1, 1) && c.ValidationEndDate < DateTime.Now)
+            var identityCards = await _context.IdentityCards.Where(c => c.ValidationEndDate < DateTime.Now)
                 .Include(c => c.BloodGroup)
                 .Include(c => c.Designation).ToListAsync();
 
@@ -79,7 +98,7 @@ namespace ITL_MakeId.Web.Controllers
         public async Task<IActionResult> UserRequestForCard()
         {
 
-            var identityCards = await _context.IdentityCards.Where(c => c.ValidationEndDate < new DateTime(2001, 1, 1))
+            var identityCards = await _context.IdentityCards.Where(c => c.ValidationEndDate == null)
                 .Include(c => c.BloodGroup)
                 .Include(c => c.Designation).ToListAsync();
 
@@ -124,7 +143,6 @@ namespace ITL_MakeId.Web.Controllers
             var cardNumber = identitycardInfo.LastOrDefault()?.CardNumber;
 
             model.CardNumber = model.GetCardNumber(cardNumber);
-
             return View(model);
         }
 
@@ -225,39 +243,57 @@ namespace ITL_MakeId.Web.Controllers
                 return NotFound();
             }
 
-            if (identityCard.ValidationEndDate < identityCard.ValidationStartDate)
+
+            if (identityCard.ValidationStartDate == null)
             {
-                ModelState.AddModelError("IdentityCard.ValidationEndDate ", "End date is not valid");
+                ModelState.AddModelError(string.Empty, "Enter valid start date");
                 return View(identityCard);
             }
-            if (ModelState.IsValid)
+
+            if (identityCard.ValidationEndDate == null)
             {
-                try
-                {
-                    IdentityCard model=new IdentityCard();
-                         model = await _context.IdentityCards.Include(c => c.BloodGroup)
-                        .Include(c => c.Designation)
-                        .FirstOrDefaultAsync(m => m.Id == id);
-
-                         model.ValidationStartDate = identityCard.ValidationStartDate;
-                         model.ValidationEndDate = identityCard.ValidationEndDate;
-
-                    _context.Update(model);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!IdentityCardExists(identityCard.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                ModelState.AddModelError(string.Empty, "Enter valid end date");
+                //return View(identityCard);
             }
+
+            if (identityCard.ValidationEndDate < identityCard.ValidationStartDate)
+            {
+                ModelState.AddModelError(string.Empty, "End date is not valid");
+                //return View(identityCard);
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        IdentityCard model = new IdentityCard();
+                        model = await _context.IdentityCards.Include(c => c.BloodGroup)
+                            .Include(c => c.Designation)
+                            .FirstOrDefaultAsync(m => m.Id == id);
+
+                        model.ValidationStartDate = identityCard.ValidationStartDate;
+                        model.ValidationEndDate = identityCard.ValidationEndDate;
+
+                        _context.Update(model);
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        if (!IdentityCardExists(identityCard.Id))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+
             return View(identityCard);
         }
 
@@ -268,7 +304,7 @@ namespace ITL_MakeId.Web.Controllers
             string previousSignatureUrl = identityCard.ImagePathOfUserSignature;
             _context.IdentityCards.Remove(identityCard);
             await _context.SaveChangesAsync();
-            
+
             string uplaodsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "image/user/");
             string uplaodsFolderSignature = Path.Combine(_webHostEnvironment.WebRootPath, "image/sig/");
 
