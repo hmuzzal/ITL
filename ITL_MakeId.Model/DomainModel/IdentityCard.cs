@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ITL_MakeId.Model.DomainModel
 {
@@ -44,8 +45,9 @@ namespace ITL_MakeId.Model.DomainModel
         public string CompanyLogoPath { get; set; }
 
         public string CardInfo { get; set; }
-
+        [DataType(DataType.Date)]
         public DateTime ValidationStartDate { get; set; }
+        [DataType(DataType.Date)]
         public DateTime ValidationEndDate { get; set; }
 
     }

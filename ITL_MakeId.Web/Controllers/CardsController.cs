@@ -179,7 +179,7 @@ namespace ITL_MakeId.Web.Controllers
 
                 }
 
-                identityCardViewModel.IdentityCard.Name = identityCardViewModel.CardNumber;
+                identityCardViewModel.IdentityCard.Name = identityCardViewModel.Name;
                 identityCardViewModel.IdentityCard.DesignationId = identityCardViewModel.DesignationId;
                 identityCardViewModel.IdentityCard.BloodGroupId = identityCardViewModel.BloodGroupId;
                 identityCardViewModel.IdentityCard.CardNumber = identityCardViewModel.CardNumber;
@@ -204,7 +204,9 @@ namespace ITL_MakeId.Web.Controllers
                 return NotFound();
             }
 
-            var identityCard = await _context.IdentityCards.FindAsync(id);
+            var identityCard = await _context.IdentityCards.Include(c => c.BloodGroup)
+                .Include(c => c.Designation)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (identityCard == null)
             {
                 return NotFound();
@@ -215,20 +217,32 @@ namespace ITL_MakeId.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Designation,BloodGroup,CardNumber," +
-                                                            "ImagePathOfUser,ImagePathOfUserSignature,ImagePathOfAuthorizedSignature," +
-                                                            "CompanyName,CompanyAddress,CompanyLogoPath,CardInfo")] IdentityCard identityCard)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ValidationStartDate,ValidationEndDate")] IdentityCard identityCard)
         {
+
             if (id != identityCard.Id)
             {
                 return NotFound();
             }
 
+            if (identityCard.ValidationEndDate < identityCard.ValidationStartDate)
+            {
+                ModelState.AddModelError("IdentityCard.ValidationEndDate ", "End date is not valid");
+                return View(identityCard);
+            }
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(identityCard);
+                    IdentityCard model=new IdentityCard();
+                         model = await _context.IdentityCards.Include(c => c.BloodGroup)
+                        .Include(c => c.Designation)
+                        .FirstOrDefaultAsync(m => m.Id == id);
+
+                         model.ValidationStartDate = identityCard.ValidationStartDate;
+                         model.ValidationEndDate = identityCard.ValidationEndDate;
+
+                    _context.Update(model);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

@@ -3,68 +3,81 @@
 @{
     ViewData["Title"] = "Details";
     var imageUrl = "~/image/user/" + (Model.IdentityCard.ImagePathOfUser);
+    var imageSignUrl = "~/image/sig/" + (Model.IdentityCard.ImagePathOfUserSignature);
+    var imageAuthUrl = "~/image/auth/" + (Model.IdentityCard.ImagePathOfAuthorizedSignature);
 }
 
+    <div class="form-bg col-md-10 mt-5 ml-auto mr-auto p-0">
+        <h3 class="formbar mb-0 mb-3">Identity Card</h3>
 
-<div class="col-md-4 ml-auto mr-auto">
-    <div>
-        <h3 class="formbar mb-0">Identity Card Details</h3>
+        <div class="col-md-6 col-sm ml-auto mr-auto">
+            <div>
+                @*form-card print*@
+                <div class="form-card p-3 float-left mr-3">
+                    <h5 class="id-card-header ">@Model.IdentityCard.CompanyName</h5>
+                    <img style="height: 80px; width: 95px" class="card-img-top" src="@imageUrl" asp-append-version="true" />
+                    <dl class="row">
+                        <dt class="col-sm-5">
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.IdentityCard.Name)
+                        </dd>
+                        <dt class="col-sm-5">
+                            @Html.DisplayNameFor(model => model.Designation)
+                        </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.IdentityCard.Designation.Title)
+                        </dd>
+                        <dt class="col-sm-5">
+                            @Html.DisplayNameFor(model => model.BloodGroup)
+                        </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.IdentityCard.BloodGroup.Name)
+                        </dd>
+                        <dt class="col-sm-5">
+                            @Html.DisplayNameFor(model => model.CardNumber)
+                        </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.IdentityCard.CardNumber)
+                        </dd>
+                        <dt class="col-sm-4 mr-4 mt-3">
+                            <img style="height: 40px; width: 65px" class="card-img-top" src="@imageSignUrl" asp-append-version="true" />
+                        </dt>
+                        <dd class="col-sm-4 mt-3">
+                            <img style="height: 40px; width: 65px" class="card-img-top" src="@imageAuthUrl" asp-append-version="true" />
 
-       
+                        </dd>
+                        <dd class="col-sm-5 border-top border-dark mr-2">
+                            <p class="sig-font">Holder Signature</p>
+                        </dd>
+                        <dd class="col-sm-6 border-top border-dark">
+                            <p class="sig-font">Authorized Signature</p>
+                        </dd>
+                    </dl>
+                </div>
 
-        <div class="form-bg p-3">
-            <img style="height: 30px;width: 55px" class="card-img-top" src="@imageUrl" asp-append-version="true" />
-            <dl class="row">
-                <dt class="col-sm-2">
-                </dt>
-                <dd class="col-sm-10">
+                <div class="form-card p-3 float-left">
+                    <h5 class="id-card-header mb-5">@Model.IdentityCard.CompanyName</h5>
+                    <dl class="row">
+                        <dt class="col-sm-12 mb-5 text-center">
+                            @Html.DisplayFor(model => model.IdentityCard.CardInfo)
+                        </dt>
 
+                        <dt class="col-sm-12 mt-5 text-center font-weight-bold">
+                            <h5>@Model.IdentityCard.CompanyName</h5>
+                        </dt>
 
-
-                </dd>
-
-
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Name)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.IdentityCard.Name)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Designation)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.IdentityCard.Designation.Title)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.BloodGroup)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.IdentityCard.BloodGroup.Name)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.CardNumber)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.IdentityCard.CardNumber)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.CompanyName)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.IdentityCard.CompanyName)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.CompanyAddress)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.IdentityCard.CompanyAddress)
-                </dd>
-            </dl>
+                        <dt class="col-sm-12 text-center">
+                            @Html.DisplayFor(model => model.IdentityCard.CompanyAddress)
+                        </dt>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="mb-5 mt-5">
+            <a class="ml-3"asp-action="" asp-route-id="@Model.IdentityCard.Id">Print</a> |
+            <a asp-action="Edit" asp-route-id="@Model.IdentityCard.Id">Edit</a> |
+            <a asp-action="Index">Back to List</a>
         </div>
     </div>
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model.IdentityCard.Id">Edit</a> |
-        <a asp-action="Index">Back to List</a>
-    </div>
-</div>

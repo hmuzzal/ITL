@@ -31,7 +31,9 @@ namespace ITL_MakeId.Model.ViewModel
         [Required(ErrorMessage = "Please, Select your image")]
         public IFormFile ImagePathOfUser { get; set; }
 
+        [Display(Name = "Holder Signature")]
         public IFormFile ImagePathOfUserSignature { get; set; }
+        [Display(Name = "Authorized Signature")]
         public IFormFile ImagePathOfAuthorizedSignature { get; set; }
 
         [Display(Name = "Company ")]

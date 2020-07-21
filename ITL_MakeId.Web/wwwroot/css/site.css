@@ -1,5 +1,11 @@
 ﻿/*Override*/
-
+.sig-font {
+    font-size: 11px;
+}
+.id-card-header {
+    color: #104a8c;
+    text-align: center;
+}
 .regi-bar {
     background-color: #86acd6 !important
 }
@@ -31,9 +37,29 @@
     height: 170px;
 }
 
+.card-box {
+    min-width: 270px;
+    min-height: 300px;
+    max-width: 270px;
+    max-height: 300px;
+}
+
+.sig-border {
+    border-top: 1px;
+}
 
 .form-bg {
     background: #E9ECEF !important;
+}
+
+.form-card {
+    background: white;
+    -ms-border-radius: 25px;
+    border-radius: 25px;
+    min-width: 280px;
+    min-height: 400px;
+    max-width: 280px;
+    max-height: 400px;
 }
 
 .sf-bg {
