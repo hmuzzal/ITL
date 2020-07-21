@@ -31,13 +31,10 @@
                         <span asp-validation-for="BloodGroup" class="text-danger"></span>
                     </div>
 
-
-
-
                     <div class="form-group">
                         <label asp-for="ImagePathOfUser" class="control-label"></label>
                         <div class="custom-file">
-                            <input asp-for="ImagePathOfUser" class="form-control custom-file-input" />
+                            <input asp-for="ImagePathOfUser" class="form-control custom-file-input" onchange="loadFile(event)" />
                             <label class="custom-file-label">Choose Image...</label>
                             <span asp-validation-for="ImagePathOfUser" class="text-danger"></span>
                         </div>
@@ -57,7 +54,14 @@
                         <span asp-validation-for="CardNumber" class="text-danger"></span>
                     </div>
 
-
+                    <div class="form-group">
+                        <label asp-for="ImagePathOfUserSignature" class="control-label"></label>
+                        <div class="custom-file">
+                            <input asp-for="ImagePathOfUserSignature" class="form-control custom-file-input" />
+                            <label class="custom-file-label">Choose Signaure...</label>
+                            <span asp-validation-for="ImagePathOfUserSignature" class="text-danger"></span>
+                        </div>
+                    </div>
 
                 </div>
             <div class="form-group col-md-6 float-left">
@@ -94,7 +98,6 @@
 
             var loadFile = function (event) {
                 var output = document.getElementById('output');
-                //$("#output").addClass("report_image");
                 output.src = URL.createObjectURL(event.target.files[0]);
             };
         </script>

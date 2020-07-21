@@ -36,7 +36,6 @@ namespace ITL_MakeId.Model.DomainModel
 
         public string ImagePathOfAuthorizedSignature { get; set; }
 
-        //[DefaultValue("Interlink Technologies Ltd.")]
         public string CompanyName { get; set; }
 
  
