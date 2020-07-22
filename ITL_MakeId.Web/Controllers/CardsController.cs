@@ -30,7 +30,7 @@ namespace ITL_MakeId.Web.Controllers
         }
 
 
-
+        [Authorize]
         public async Task<IActionResult> Dashboard()
         {
             ViewBag.RequestedIdentityCards = _context.IdentityCards.Where(c => c.ValidationEndDate == null)
@@ -52,7 +52,6 @@ namespace ITL_MakeId.Web.Controllers
 
 
 
-
         public async Task<IActionResult> Index()
         {
             var identityCards = await _context.IdentityCards
@@ -60,13 +59,15 @@ namespace ITL_MakeId.Web.Controllers
                 .Include(c => c.Designation).ToListAsync();
 
 
-            IdentityCardViewModel model = new IdentityCardViewModel();
-            model.IdentityCards = identityCards;
+            IdentityCardViewModel model = new IdentityCardViewModel
+            {
+                IdentityCards = identityCards
+            };
 
             return View(model);
         }
 
-
+        [Authorize]
         public async Task<IActionResult> ValidatedUsers()
         {
 
@@ -83,7 +84,7 @@ namespace ITL_MakeId.Web.Controllers
         }
 
 
-
+        [Authorize]
         public async Task<IActionResult> ExpiredUserCards()
         {
 
@@ -99,6 +100,7 @@ namespace ITL_MakeId.Web.Controllers
             return View("ValidatedUsers", model);
         }
 
+        [Authorize]
         public async Task<IActionResult> UserRequestForCard()
         {
 
@@ -114,6 +116,7 @@ namespace ITL_MakeId.Web.Controllers
             return View("ValidatedUsers", model);
         }
 
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -137,6 +140,7 @@ namespace ITL_MakeId.Web.Controllers
         }
 
 
+        [Authorize]
         public IActionResult Create()
         {
             IdentityCardViewModel model = new IdentityCardViewModel();
@@ -151,6 +155,7 @@ namespace ITL_MakeId.Web.Controllers
         }
 
 
+        [Authorize]
         [Microsoft.AspNetCore.Mvc.HttpPost]
         [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Microsoft.AspNetCore.Mvc.Bind("Id,Name,DesignationId," +
@@ -209,16 +214,22 @@ namespace ITL_MakeId.Web.Controllers
                 identityCardViewModel.IdentityCard.ImagePathOfUserSignature = uniqueFileNameSignature;
                 identityCardViewModel.IdentityCard.ImagePathOfAuthorizedSignature = uniqueFileNameAuthorizedSignature;
                 identityCardViewModel.IdentityCard.CompanyLogoPath = uniqueFileNameCompanyLogo;
+             
 
-
+                
                 _context.Add(identityCardViewModel.IdentityCard);
-                await _context.SaveChangesAsync();
+               var saved= await _context.SaveChangesAsync();
+                if (saved>0)
+                {
+                    identityCardViewModel.Message = "Saved Successfully";
+                }
                 return RedirectToAction(nameof(Index));
             }
             return View(identityCardViewModel);
         }
 
 
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -236,7 +247,7 @@ namespace ITL_MakeId.Web.Controllers
             return View(identityCard);
         }
 
-
+        [Authorize]
         [Microsoft.AspNetCore.Mvc.HttpPost]
         [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Microsoft.AspNetCore.Mvc.Bind("Id,ValidationStartDate,ValidationEndDate")] IdentityCard identityCard)
@@ -257,13 +268,11 @@ namespace ITL_MakeId.Web.Controllers
             if (identityCard.ValidationEndDate == null)
             {
                 ModelState.AddModelError(string.Empty, "Enter valid end date");
-                //return View(identityCard);
             }
 
             if (identityCard.ValidationEndDate < identityCard.ValidationStartDate)
             {
                 ModelState.AddModelError(string.Empty, "End date is not valid");
-                //return View(identityCard);
             }
             else
             {
@@ -301,6 +310,7 @@ namespace ITL_MakeId.Web.Controllers
             return View(identityCard);
         }
 
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             var identityCard = await _context.IdentityCards.FindAsync(id);
@@ -330,48 +340,6 @@ namespace ITL_MakeId.Web.Controllers
         private bool IdentityCardExists(int id)
         {
             return _context.IdentityCards.Any(e => e.Id == id);
-        }
-
-
-        public JsonResult ChartData()
-        {
-            int requestedIdentityCards = _context.IdentityCards.Where(c => c.ValidationEndDate == null)
-                .Include(c => c.BloodGroup)
-                .Include(c => c.Designation).Count();
-
-
-            int validatedIdentityCards = _context.IdentityCards.Where(c => c.ValidationEndDate >= DateTime.Now)
-                .Include(c => c.BloodGroup)
-                .Include(c => c.Designation).Count();
-
-            int expiredIdentityCards = _context.IdentityCards.Where(c => c.ValidationEndDate < DateTime.Now)
-                .Include(c => c.BloodGroup)
-                .Include(c => c.Designation).Count();
-
-            List<int> list = new List<int>();
-       
-            list.Add(requestedIdentityCards);
-            list.Add(validatedIdentityCards);
-            list.Add(expiredIdentityCards);
-      
-
-            int[] intList = list.ToArray();
-
-
-            Chart _chart = new Chart();
-            _chart.labels = new string[] { "Card Requests " + requestedIdentityCards, "Validated Cards " + validatedIdentityCards, "Expired Cards " + expiredIdentityCards};
-            _chart.datasets = new List<Datasets>();
-            List<Datasets> _dataSet = new List<Datasets>();
-            _dataSet.Add(new Datasets()
-            {
-                label = "Identity Cards",
-                data = intList,
-                backgroundColor = new string[] { "#008000", "#ADFF2F", "#FF0000" },
-                borderColor = new string[] { "#FFFFFF", "#FFFFFF ", "#FFFFFF " },
-                borderWidth = "2"
-            });
-            _chart.datasets = _dataSet;
-            return Json(_chart, JsonRequestBehavior.AllowGet);
         }
     }
 }

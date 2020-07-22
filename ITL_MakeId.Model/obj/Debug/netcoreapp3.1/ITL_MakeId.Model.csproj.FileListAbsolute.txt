@@ -27,6 +27,7 @@ C:\Users\Hasan Mahmud\Desktop\Project\Practise\ITL_V3\ITL\ITL_MakeId.Model\obj\D
 C:\Users\soft-code\Desktop\New folder (2)\ITL\ITL_MakeId.Model\bin\Debug\netcoreapp3.1\ITL_MakeId.Model.deps.json
 C:\Users\soft-code\Desktop\New folder (2)\ITL\ITL_MakeId.Model\bin\Debug\netcoreapp3.1\ITL_MakeId.Model.dll
 C:\Users\soft-code\Desktop\New folder (2)\ITL\ITL_MakeId.Model\bin\Debug\netcoreapp3.1\ITL_MakeId.Model.pdb
+C:\Users\soft-code\Desktop\New folder (2)\ITL\ITL_MakeId.Model\obj\Debug\netcoreapp3.1\ITL_MakeId.Model.csprojAssemblyReference.cache
 C:\Users\soft-code\Desktop\New folder (2)\ITL\ITL_MakeId.Model\obj\Debug\netcoreapp3.1\ITL_MakeId.Model.AssemblyInfoInputs.cache
 C:\Users\soft-code\Desktop\New folder (2)\ITL\ITL_MakeId.Model\obj\Debug\netcoreapp3.1\ITL_MakeId.Model.AssemblyInfo.cs
 C:\Users\soft-code\Desktop\New folder (2)\ITL\ITL_MakeId.Model\obj\Debug\netcoreapp3.1\ITL_MakeId.Model.dll

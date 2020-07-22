@@ -47,6 +47,7 @@ namespace ITL_MakeId.Model.ViewModel
 
         public string CardInfo { get; set; }
 
+        public string Message { get; set; }
         public DateTime ValidationStartDate { get; set; }
         public DateTime ValidationEndDate { get; set; }
         public string GetCardNumber(string dbCardNumber)
