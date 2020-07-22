@@ -64,6 +64,7 @@ namespace ITL_MakeId.Web.Controllers
                 IdentityCards = identityCards
             };
 
+            ViewBag.Message=TempData["Message"] ;
             return View(model);
         }
 
@@ -221,7 +222,7 @@ namespace ITL_MakeId.Web.Controllers
                var saved= await _context.SaveChangesAsync();
                 if (saved>0)
                 {
-                    identityCardViewModel.Message = "Saved Successfully";
+                    TempData["Message"] = "Saved Successfully";
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -258,21 +259,47 @@ namespace ITL_MakeId.Web.Controllers
                 return NotFound();
             }
 
+            IdentityCard model = new IdentityCard();
+            model = await _context.IdentityCards.Include(c => c.BloodGroup)
+                .Include(c => c.Designation)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
 
             if (identityCard.ValidationStartDate == null)
             {
+              identityCard.Id = model.Id;
+              identityCard.Name = model.Name;
+              identityCard.Designation = model.Designation;
+              identityCard.BloodGroup = model.BloodGroup;
+              identityCard.CardNumber = model.CardNumber;
+                
+
                 ModelState.AddModelError(string.Empty, "Enter valid start date");
                 return View(identityCard);
             }
 
             if (identityCard.ValidationEndDate == null)
             {
+                identityCard.Id = model.Id;
+                identityCard.Name = model.Name;
+                identityCard.Designation = model.Designation;
+                identityCard.BloodGroup = model.BloodGroup;
+                identityCard.CardNumber = model.CardNumber;
+
                 ModelState.AddModelError(string.Empty, "Enter valid end date");
+                return View(identityCard);
             }
 
             if (identityCard.ValidationEndDate < identityCard.ValidationStartDate)
             {
+                identityCard.Id = model.Id;
+                identityCard.Name = model.Name;
+                identityCard.Designation = model.Designation;
+                identityCard.BloodGroup = model.BloodGroup;
+                identityCard.CardNumber = model.CardNumber;
+
                 ModelState.AddModelError(string.Empty, "End date is not valid");
+                return View(identityCard);
             }
             else
             {
@@ -280,16 +307,17 @@ namespace ITL_MakeId.Web.Controllers
                 {
                     try
                     {
-                        IdentityCard model = new IdentityCard();
-                        model = await _context.IdentityCards.Include(c => c.BloodGroup)
-                            .Include(c => c.Designation)
-                            .FirstOrDefaultAsync(m => m.Id == id);
+                        //IdentityCard model = new IdentityCard();
+                        //model = await _context.IdentityCards.Include(c => c.BloodGroup)
+                        //    .Include(c => c.Designation)
+                        //    .FirstOrDefaultAsync(m => m.Id == id);
 
                         model.ValidationStartDate = identityCard.ValidationStartDate;
                         model.ValidationEndDate = identityCard.ValidationEndDate;
 
                         _context.Update(model);
-                        await _context.SaveChangesAsync();
+                      var save=   await _context.SaveChangesAsync();
+                     
                     }
                     catch (DbUpdateConcurrencyException)
                     {

@@ -88,10 +88,10 @@
 
 else
 {
-<div class="text-center m-auto">
-    @if ( Model.Message!= null)
+<div class="text-center ml-auto mr-auto mt-3">
+    @if ( ViewBag.Message!= null)
     {
-    <p class="alert alert-success" id="successMessage">@Model.Message!</p>
+    <p class="alert alert-success" id="successMessage">@ViewBag.Message!</p>
     }
     <h1 class="display-4 mt-5 mb-5">Welcome</h1>
     <h3 class="display-4 mb-5">To</h3>
@@ -106,6 +106,10 @@ else
             $('#cardTable').dataTable({
 
             });
+        });
+
+        $(function(){
+            $('#successMessage').hide(5000);
         });
     </script>
 }
