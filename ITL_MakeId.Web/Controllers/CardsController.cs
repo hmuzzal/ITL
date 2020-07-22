@@ -3,12 +3,16 @@ using ITL_MakeId.Model.DomainModel;
 using ITL_MakeId.Model.ViewModel;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Mvc;
+using Controller = Microsoft.AspNetCore.Mvc.Controller;
+using JsonResult = Microsoft.AspNetCore.Mvc.JsonResult;
+using SelectList = Microsoft.AspNetCore.Mvc.Rendering.SelectList;
 
 namespace ITL_MakeId.Web.Controllers
 {
@@ -147,9 +151,9 @@ namespace ITL_MakeId.Web.Controllers
         }
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,DesignationId," +
+        [Microsoft.AspNetCore.Mvc.HttpPost]
+        [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Microsoft.AspNetCore.Mvc.Bind("Id,Name,DesignationId," +
                                                       "BloodGroupId,CardNumber,CardNumber,ImagePathOfUser,ImagePathOfUserSignature," +
                                                       "ImagePathOfAuthorizedSignature,CompanyName,CompanyAddress," +
                                                       "CompanyLogoPath,CardInfo")] IdentityCardViewModel identityCardViewModel)
@@ -233,9 +237,9 @@ namespace ITL_MakeId.Web.Controllers
         }
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ValidationStartDate,ValidationEndDate")] IdentityCard identityCard)
+        [Microsoft.AspNetCore.Mvc.HttpPost]
+        [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Microsoft.AspNetCore.Mvc.Bind("Id,ValidationStartDate,ValidationEndDate")] IdentityCard identityCard)
         {
 
             if (id != identityCard.Id)
@@ -328,5 +332,46 @@ namespace ITL_MakeId.Web.Controllers
             return _context.IdentityCards.Any(e => e.Id == id);
         }
 
+
+        public JsonResult ChartData()
+        {
+            int requestedIdentityCards = _context.IdentityCards.Where(c => c.ValidationEndDate == null)
+                .Include(c => c.BloodGroup)
+                .Include(c => c.Designation).Count();
+
+
+            int validatedIdentityCards = _context.IdentityCards.Where(c => c.ValidationEndDate >= DateTime.Now)
+                .Include(c => c.BloodGroup)
+                .Include(c => c.Designation).Count();
+
+            int expiredIdentityCards = _context.IdentityCards.Where(c => c.ValidationEndDate < DateTime.Now)
+                .Include(c => c.BloodGroup)
+                .Include(c => c.Designation).Count();
+
+            List<int> list = new List<int>();
+       
+            list.Add(requestedIdentityCards);
+            list.Add(validatedIdentityCards);
+            list.Add(expiredIdentityCards);
+      
+
+            int[] intList = list.ToArray();
+
+
+            Chart _chart = new Chart();
+            _chart.labels = new string[] { "Card Requests " + requestedIdentityCards, "Validated Cards " + validatedIdentityCards, "Expired Cards " + expiredIdentityCards};
+            _chart.datasets = new List<Datasets>();
+            List<Datasets> _dataSet = new List<Datasets>();
+            _dataSet.Add(new Datasets()
+            {
+                label = "Identity Cards",
+                data = intList,
+                backgroundColor = new string[] { "#008000", "#ADFF2F", "#FF0000" },
+                borderColor = new string[] { "#FFFFFF", "#FFFFFF ", "#FFFFFF " },
+                borderWidth = "2"
+            });
+            _chart.datasets = _dataSet;
+            return Json(_chart, JsonRequestBehavior.AllowGet);
+        }
     }
 }

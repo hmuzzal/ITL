@@ -1,13 +1,11 @@
 ﻿/*Override*/
-@media print {
-    .myDivToPrint {
-        background-color: rgb(230, 0, 0);
-        height: 100%;
-        width: 100%;
-        position: fixed;
-    }
-}
 
+.padding-dashboard {
+    padding-bottom: 300px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
 .text-blue {
     color: #2180C3;
 }
