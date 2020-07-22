@@ -11,11 +11,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Controller = Microsoft.AspNetCore.Mvc.Controller;
-using JsonResult = Microsoft.AspNetCore.Mvc.JsonResult;
 using SelectList = Microsoft.AspNetCore.Mvc.Rendering.SelectList;
 
 namespace ITL_MakeId.Web.Controllers
 {
+    [Authorize]
     public class CardsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -30,7 +30,6 @@ namespace ITL_MakeId.Web.Controllers
         }
 
 
-        [Authorize]
         public async Task<IActionResult> Dashboard()
         {
             ViewBag.RequestedIdentityCards = _context.IdentityCards.Where(c => c.ValidationEndDate == null)
@@ -51,7 +50,7 @@ namespace ITL_MakeId.Web.Controllers
         }
 
 
-
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var identityCards = await _context.IdentityCards
@@ -68,7 +67,7 @@ namespace ITL_MakeId.Web.Controllers
             return View(model);
         }
 
-        [Authorize]
+        
         public async Task<IActionResult> ValidatedUsers()
         {
 
@@ -85,7 +84,6 @@ namespace ITL_MakeId.Web.Controllers
         }
 
 
-        [Authorize]
         public async Task<IActionResult> ExpiredUserCards()
         {
 
@@ -101,7 +99,7 @@ namespace ITL_MakeId.Web.Controllers
             return View("ValidatedUsers", model);
         }
 
-        [Authorize]
+    
         public async Task<IActionResult> UserRequestForCard()
         {
 
@@ -117,7 +115,6 @@ namespace ITL_MakeId.Web.Controllers
             return View("ValidatedUsers", model);
         }
 
-        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -141,7 +138,6 @@ namespace ITL_MakeId.Web.Controllers
         }
 
 
-        [Authorize]
         public IActionResult Create()
         {
             IdentityCardViewModel model = new IdentityCardViewModel();
@@ -156,7 +152,6 @@ namespace ITL_MakeId.Web.Controllers
         }
 
 
-        [Authorize]
         [Microsoft.AspNetCore.Mvc.HttpPost]
         [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Microsoft.AspNetCore.Mvc.Bind("Id,Name,DesignationId," +
@@ -230,7 +225,7 @@ namespace ITL_MakeId.Web.Controllers
         }
 
 
-        [Authorize]
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -338,7 +333,7 @@ namespace ITL_MakeId.Web.Controllers
             return View(identityCard);
         }
 
-        [Authorize]
+    
         public async Task<IActionResult> Delete(int? id)
         {
             var identityCard = await _context.IdentityCards.FindAsync(id);

@@ -67,8 +67,7 @@ namespace ITL_MakeId.Web
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-                endpoints.MapRazorPages();
+    
             });
         }
     }
