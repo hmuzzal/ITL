@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -63,11 +62,11 @@ namespace ITL_MakeId.Web.Controllers
                 IdentityCards = identityCards
             };
 
-            ViewBag.Message=TempData["Message"] ;
+            ViewBag.Message = TempData["Message"];
             return View(model);
         }
 
-        
+
         public async Task<IActionResult> ValidatedUsers()
         {
 
@@ -99,7 +98,7 @@ namespace ITL_MakeId.Web.Controllers
             return View("ValidatedUsers", model);
         }
 
-    
+
         public async Task<IActionResult> UserRequestForCard()
         {
 
@@ -210,12 +209,12 @@ namespace ITL_MakeId.Web.Controllers
                 identityCardViewModel.IdentityCard.ImagePathOfUserSignature = uniqueFileNameSignature;
                 identityCardViewModel.IdentityCard.ImagePathOfAuthorizedSignature = uniqueFileNameAuthorizedSignature;
                 identityCardViewModel.IdentityCard.CompanyLogoPath = uniqueFileNameCompanyLogo;
-             
 
-                
+
+
                 _context.Add(identityCardViewModel.IdentityCard);
-               var saved= await _context.SaveChangesAsync();
-                if (saved>0)
+                var saved = await _context.SaveChangesAsync();
+                if (saved > 0)
                 {
                     TempData["Message"] = "Saved Successfully";
                 }
@@ -262,12 +261,12 @@ namespace ITL_MakeId.Web.Controllers
 
             if (identityCard.ValidationStartDate == null)
             {
-              identityCard.Id = model.Id;
-              identityCard.Name = model.Name;
-              identityCard.Designation = model.Designation;
-              identityCard.BloodGroup = model.BloodGroup;
-              identityCard.CardNumber = model.CardNumber;
-                
+                identityCard.Id = model.Id;
+                identityCard.Name = model.Name;
+                identityCard.Designation = model.Designation;
+                identityCard.BloodGroup = model.BloodGroup;
+                identityCard.CardNumber = model.CardNumber;
+
 
                 ModelState.AddModelError(string.Empty, "Enter valid start date");
                 return View(identityCard);
@@ -311,8 +310,8 @@ namespace ITL_MakeId.Web.Controllers
                         model.ValidationEndDate = identityCard.ValidationEndDate;
 
                         _context.Update(model);
-                      var save=   await _context.SaveChangesAsync();
-                     
+                        var save = await _context.SaveChangesAsync();
+
                     }
                     catch (DbUpdateConcurrencyException)
                     {
@@ -333,7 +332,7 @@ namespace ITL_MakeId.Web.Controllers
             return View(identityCard);
         }
 
-    
+
         public async Task<IActionResult> Delete(int? id)
         {
             var identityCard = await _context.IdentityCards.FindAsync(id);
