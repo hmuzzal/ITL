@@ -69,6 +69,10 @@ namespace ITL_MakeId.Web
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapRazorPages();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 755160998b8fcbc4dae56920522d323153fd8b1a
             });
         }
     }
