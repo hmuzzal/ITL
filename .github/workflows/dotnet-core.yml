@@ -17,7 +17,9 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.301
-    - name: Install dependencies
+    - name: .NET Core CLI
+  # You may pin to the exact commit or the version.
+  # uses: baruchiro/github-actions@cfa460ee18f07031ba85ff00d2184fabf03f9f1f
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
